@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/adminpage.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>MovieMemo</title>
+    <%- include('partials/head.ejs') %>
+</head>
+<body>
+    <%- include('partials/components/navbar') %>
+
+    <div class="wrapper">
+
+        <h2>회원 관리 테이블</h2>
+        
+        <select id="sortBy" name="sortBy" onchange="sortReviews(this.value)">
+            <option value="" >정렬 순서</option>
+            <option value="patch-latest">최신편집순</option>
+            <option value="latest">최신등록순</option>
+            <option value="oldest">과거등록순</option>
+            <option value="rating">평점순</option>
+            <option value="popular">좋아요순</option>
+            <option value="report" selected>신고순</option>
+        </select>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>닉네임</th>
+                    <th>영화 제목</th>
+                    <th>리뷰 내용</th>
+                    <th>좋아요 수</th>
+                    <th>신고수</th>
+                    <th>작성일</th>
+                    <th>편집일</th>
+                    <th>리뷰삭제</th>
+                    <th>강제퇴장</th>
+                </tr>
+            </thead>
+            <tbody id="review-list">
+                <%
+                function formatDate(dateString) {
+                    const date = new Date(dateString);
+                    const year = date.getFullYear();
+                    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+                    const day = ('0' + date.getDate()).slice(-2);
+                    return `${year}-${month}-${day}`;
+                }
+                %>
+
+                <% if (data.reviews && data.reviews.length > 0) { %>
+                    <% data.reviews.forEach(review => { %>
+                        <tr>
+                            <td><%= review.Member.nick %></td>
+                            <td><%= review.Movie.movieTitle %></td>
+                            <td><a href="#" class="read-more" data-review-content="<%= review.content %>">자세히 보기</a></td>
+                            <td><%= review.likeCount %></td>
+                            <td><%= review.reportCount %></td>
+                            <td><%= formatDate(review.createdAt) %></td>
+                            <td><%= formatDate(review.updatedAt) %></td>
+                            <td><button class="del-btn" type="submit" data-review-id="<%= review.reviewId %>">삭제</button></td>
+                            <td><button class="patch-btn" type="submit" data-member-id="<%= review.memberId %>">추방</button></td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="9">리뷰가 없습니다.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+        <div class="pagination"></div>
+
+        <div id="delete-modal" class="modal">
+            <div class="del-modal-content">
+                <p>정말 삭제하시겠습니까</p>
+                <p>삭제 시, 복구할 수 없습니다.</p>
+                <button id="confirm-delete" class="modal-btn">예</button>
+                <button id="cancel-delete" class="modal-btn">아니오</button>
+            </div>
+        </div>
+        
+        <div id="patch-modal" class="modal">
+            <div class="patch-modal-content">
+                <p>정말 강제퇴장 시키겠습니까?</p>
+                <p>강제퇴장 시, 복구할 수 없습니다.</p>
+                <button id="confirm-patch" class="modal-btn">예</button>
+                <button id="cancel-patch" class="modal-btn">아니오</button>
+            </div>
+        </div>
+
+
+        <%- include('partials/tail.ejs') %>
+
+        <div id="review-modal" class="modal">
+            <div class="modal-content">
+                <p id="review-modal-content"></p>
+                <button id="close-review-modal" class="review-modal-btn">닫기</button>
+            </div>
+        </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="/js/adminpage.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/navbar.js"></script>
+
+</body>
+</html>

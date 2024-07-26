@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>new rendering</title> -->
+    <%- include('partials/head.ejs') %>
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="stylesheet" href="/css/searchresult.css" />
+    <link rel="stylesheet" href="/css/review.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script defer src="/js/review.js"></script>
+  </head>
+  <body>
+    <%- include('partials/components/navbar') %>
+    <main id="page_container">
+      <% if(data.vodUrl && data.vodUrl !== '') { %>
+      <div class="trailer_box">
+        <video
+          src="https://www.kmdb.or.kr/trailer/play/<%= data.vodUrl %>"
+          autoplay=""
+          muted=""
+          loop=""
+          id="trailer"
+        ></video>
+      </div>
+      <% } %>
+      <div id="movie_info_container">
+        <section class="info_container" id="<%= data.movieId%>">
+          <article class="sub_info_box">
+            <div class="detail_info_box">
+              <div class="movie_title">
+                <p class="contents_title"><%= data.movieTitle %></p>
+              </div>
+
+              <div class="sub_detail_box">
+                <div class="poster_container">
+                  <article class="poster_box">
+                    <img
+                      src="<%= data.posterUrl %>"
+                      alt="포스터 이미지"
+                      onerror="this.onerror=null; this.src='/img/sample_poster.png';"
+                    />
+                  </article>
+
+                  <div class="rating_box">
+                    <div class="rating">
+                      <i class="rating__star far fa-star"></i>
+                      <span class="rating_num"
+                        ><%= data.reviewMovieRating %></span
+                      >
+                    </div>
+                  </div>
+
+                  <div
+                    class="releaseBox"
+                    data-release-date="<%= data.moviereleaseDate %>"
+                  >
+                    <p class="commonTitle">Release Date</p>
+                    <p class="release_date commonText" id="releaseDate"></p>
+                  </div>
+                </div>
+
+                <div class="detailNcastBox">
+                  <div class="detail_box">
+                    <p class="contents_title">Details</p>
+
+                    <div class="detail_info_list">
+                      <div class="directorBox">
+                        <p class="commonTitle">Director</p>
+                        <p class="director commonText">
+                          <%= data.directorNm %>
+                        </p>
+                      </div>
+
+                      <div class="genreBox">
+                        <p class="commonTitle">Genre</p>
+                        <p class="genre commonText"><%= data.genres %></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cast_box">
+                    <p class="contents_title">Cast</p>
+
+                    <ul class="cast_list" style="color: white">
+                      <% const castMembers = data.movieCast.split(',').slice(0,
+                      5); castMembers.forEach(function(actor) { %>
+                      <li><%= actor.trim() %></li>
+                      <% }); %>
+                    </ul>
+                  </div>
+
+                  <div class="story_box">
+                    <p class="contents_title">Storyline</p>
+                    <p class="story_text"><%= data.movieSynopsys %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+
+      <section id="review_container">
+        <div class="review_btn_box">
+          <p class="contents_title">Reviews</p>
+          <button class="createReviewBtn">
+            <span class="material-symbols-rounded">rate_review</span>
+            리뷰 작성
+          </button>
+          <div class="movie_review_modal_bg hidden">
+            <div class="movie_review_modal">
+              <form action="" name="reviewForm" id="reviewForm">
+                <div class="rating_btn">
+                  <span><i class="rating__star far fa-star"></i> </span>
+                  <!-- <input type="number" id="rating" name="reviewMovieRating" min="1" max="5" required><br> -->
+                  <label for="rating1">1점</label
+                  ><input type="radio" id="rating1" name="rating" value="1" />
+                  <label for="rating2">2점</label
+                  ><input type="radio" id="rating2" name="rating" value="2" />
+                  <label for="rating3">3점</label
+                  ><input type="radio" id="rating3" name="rating" value="3" />
+                  <label for="rating4">4점</label
+                  ><input type="radio" id="rating4" name="rating" value="4" />
+                  <label for="rating5">5점</label
+                  ><input type="radio" id="rating5" name="rating" value="5" />
+                </div>
+                <textarea
+                  name="reviewPost"
+                  id="reviewPost"
+                  cols="40"
+                  rows="20"
+                  placeholder="리뷰를 작성해 주세요"
+                ></textarea>
+                <p class="form_btn_section">
+                  <button type="button" class="buttonClose">취소</button>
+                  <button type="submit" class="reviewSubBtn">제출</button>
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="review_section"></div>
+
+        <button class="load_more">더 보기</button>
+      </section>
+    </main>
+    <%- include('partials/tail.ejs') %>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/login.js"></script>
+  <script defer src="/js/navbar.js"></script>
+</html>

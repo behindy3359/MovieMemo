@@ -1,0 +1,272 @@
+/* 주연님이 만드신거 고대로 가져왔음! */
+
+/* modal */
+
+.hidden {
+  display: none;
+}
+
+
+.loginModal {
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 20%;
+  /* position the close button */
+  position: relative;
+  text-align: center;
+}
+
+form input {
+  width: 80%;
+  outline: none;
+  border: 1px solid #fff;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background: #e4e4e4;
+}
+
+
+.close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+
+
+
+
+button:hover {
+  background-color:  #B20710;
+}
+
+
+.login-btn {
+ 
+  color: white;
+  border-radius: 10px;
+  padding: 10px;
+  width: 90px;
+  margin-top: 10px;
+ 
+
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+.login {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.navbar {
+  background: #050C0A;
+  padding: 0 15px;
+  margin-bottom: 100px;
+  margin-top: 10px;
+}
+
+.navdiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo a {
+  font-size: 35px;
+  font-weight: 600;
+  color: white;
+}
+
+
+button {
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100px;
+  border: none;
+  outline: none;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  background:transparent;
+}
+
+button a {
+  color: white;
+  font-weight: bold;
+}
+.search-box-wrapper{
+  font-size: 1.2rem;
+  display: flex;
+  border-bottom: 2px solid white;
+}
+.search-box-word{
+  width: 100%;
+  padding-bottom: 0px;
+  text-align: right;
+  background:none;
+  border:none;
+  outline: none;
+}
+.search-box-btn{
+  color: white;
+  background: none;
+}
+.search-box-Smethod{
+  cursor: pointer;
+  color: #fff;
+}
+
+.m-search-box-wrapper{
+display: none;
+}
+
+#openLoginModal{
+  color: white;
+  font-weight: bold;
+}
+
+#openLoginModal:hover{
+  background: #B20710;
+}
+
+
+
+
+
+
+
+/* 모바일 화면에서 적용될 스타일 */
+@media screen and (max-width: 800px) {
+  .navbar {
+    padding: 10px 15px; /* 네비게이션 바의 패딩 축소 */
+    margin-bottom: 50px; /* 네비게이션 바와 슬라이더 사이 여백 축소 */
+  }
+
+  .logo a {
+    font-size: 25px; /* 로고 폰트 크기 축소 */
+  }
+
+  /* .navbar ul { */
+    /* display: none;  */
+    /* 네비게이션 바의 버튼 메뉴 숨기기 */
+  /* } */
+
+  .first-swiper {
+    width: 100%; /* 슬라이더 전체 너비로 설정 */
+    margin: 20px auto; /* 슬라이더의 상하 여백 조정 */
+  }
+
+  .swiper-slide {
+    text-align: center; /* 슬라이드 내용 가운데 정렬 */
+  }
+
+  /* .swiper-pagination,
+  .swiper-button-prev,
+  .swiper-button-next,
+  .swiper-scrollbar {
+    display: none; 
+    
+  } */
+  /* 슬라이더 컨트롤 숨기기 */
+
+  .loginModal {
+    width: 90%; /* 로그인 모달 창 너비 조정 */
+    left: 5%; /* 화면 가운데 정렬 */
+    top: 20%; /* 상단 여백 추가 */
+  }
+
+
+  .modal-content {
+    padding: 20px; /* 내부 패딩 축소 */
+  }
+
+  .login-box input {
+    width: 100%; /* 입력 필드 너비를 100%로 설정하여 화면에 꽉 차게 함 */
+  }
+
+  .login-btn {
+    width: 100%; /* 로그인 버튼 너비 조정 */
+    margin-top: 20px; /* 버튼과 입력 필드 사이 여백 추가 */
+  }
+
+  .modal-content {
+      margin: 10% auto; /* 모달 창을 화면 중앙으로 이동 */
+      padding: 15px; /* 내부 패딩 축소 */
+      width: 80%; /* 모달 창 너비 조정 */
+      max-width: 300px; /* 최대 너비 지정 */
+      border: none; /* 테두리 제거 */
+    }
+  
+    form input {
+      width: 100%; /* 입력 필드 너비를 100%로 설정하여 화면에 꽉 차게 함 */
+    }
+  
+    .close {
+      font-size: 24px; /* 닫기 버튼 아이콘 크기 조정 */
+      top: 5px; /* 닫기 버튼 위치 조정 */
+      right: 10px;
+    }
+  
+    .login-btn {
+      width: 100%; /* 로그인 버튼 너비 조정 */
+      margin-top: 20px; /* 버튼과 입력 필드 사이 여백 추가 */
+    }
+  
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.8); /* 배경 투명도 조정 */
+    }
+
+    .m-search-box-Smethod{
+      color: #fff;;
+    }
+  
+    .loginModal {
+      width: 90%; /* 로그인 모달 창 너비 조정 */
+      left: 5%; /* 화면 가운데 정렬 */
+      top: 20%; /* 상단 여백 추가 */
+    }
+}
+

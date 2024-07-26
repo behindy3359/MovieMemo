@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('partials/head.ejs') %>
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/searchresult.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/mypage.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>MovieMemo</title>
+</head>
+<body>
+    <!-- <nav class="navbar">
+        <div class="navdiv">
+            <div class="logo">
+                <a href="/">MovieMemo</a>
+            </div>
+        </div>
+    </nav> -->
+    <%- include('partials/components/navbar') %>
+
+    <div class="wrapper">
+        <h2>회원정보 변경</h2>
+        <form action="#" method="POST" id="member-info-form" class="member-info-form">
+            <div class="fields-container">
+                <div class="nick-field">
+                    <!-- <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        value="<%= member.nick %>"
+                        placeholder="닉네임"
+                        readonly
+                        style="font-size: 15px;"
+                    ><br> -->
+                    <p style="font-size: 25px; margin-top: 6px; margin-bottom: 40px;">안녕하세요 <%= member.nick %>님</p>
+                    <select id="gender" name="gender">
+                        <option value="" disabled <%= !member.gender ? 'selected' : '' %>>성별 선택</option>
+                        <option value="male" <%= member.gender.toLowerCase() === 'male' ? 'selected' : '' %>>남성</option>
+                        <option value="female" <%= member.gender.toLowerCase() === 'female' ? 'selected' : '' %>>여성</option>
+                    </select><br>
+                    <select id="age" name="age">
+                        <option value="" disabled <%= !member.age ? 'selected' : '' %>>연령대 선택</option>
+                        <option value="10" <%= member.age === 10 ? 'selected' : '' %>>10 대</option>
+                        <option value="20" <%= member.age === 20 ? 'selected' : '' %>>20 대</option>
+                        <option value="30" <%= member.age === 30 ? 'selected' : '' %>>30 대</option>
+                        <option value="40" <%= member.age === 40 ? 'selected' : '' %>>40 대</option>
+                    </select><br>
+                </div>
+                <div class="password-field">
+                    <input
+                        type="password"
+                        id="current-password"
+                        name="current-password"
+                        placeholder="현재 비밀번호"
+                    ><div id="passwordMessage"></div><br>
+                    <input
+                        type="password"
+                        id="change-password"
+                        name="changePassword"
+                        placeholder="변경 비밀번호"
+                    ><div id="chgPasswordMessage"></div><br>
+                        <input
+                        type="password"
+                        id="confirm-password"
+                        name="confirm-password"
+                        placeholder="비밀번호 확인"
+                    ><div id="confirmPasswordMessage"></div><br>
+                    </div>
+            </div>
+            <div class="button-container">
+                <button class="member-patch-btn" type="submit">정보수정</button>
+                <button class="member-delete-btn" type="submit">회원탈퇴</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="wrapper">
+        <h2>작성한 리뷰 목록 
+            <select id="sortBy" name="sortBy" onchange="sortReviews(this.value)">
+                <option value="" >정렬 순서</option>
+                <option value="patch-latest">최신편집순</option>
+                <option value="latest">최신등록순</option>
+                <option value="oldest">과거등록순</option>
+                <option value="rating">평점순</option>
+                <option value="popular" selected>좋아요순</option>
+            </select>
+        </h2>
+        <div id="review-list">
+            <% if (reviews && reviews.length > 0) { %>
+                <% reviews.forEach(review => { %>
+                    <div class="review-title" data-review-id="<%= review.reviewId %>">
+                        <div class="review-title-row"><%= review.Movie.movieTitle %></div>
+                        <div class="review-content-row">
+                            <div class="review-content">
+                                <%= review.content %>
+                            </div>
+                            <span class="read-more">더보기</span>
+                            <div class="likes-count">
+                                <img class="like-img" src="/img/icon-heart-full.png" alt="LikeIcon">
+                                <div class="like-num"><%= review.likeCount %></div>
+                            </div>
+                            <div class="review-btn">
+                                <button class="patch-btn" type="button">수정</button>
+                                <button class="del-btn" type="button">삭제</button>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <div id="no-reviews">아직 작성한 리뷰가 없습니다.</div>
+            <% } %>
+        </div>
+        
+    
+        <% if (pagination.totalPages > 1) { %>
+            <div class="pagination">
+                <% for(let i = 1; i <= pagination.totalPages; i++) { %>
+                    <% if(i == pagination.currentPage) { %>
+                        <span class="page-number active"><%= i %></span>
+                    <% } else { %>
+                        <a href="#" class="page-number" data-page="<%= i %>"><%= i %></a>
+                    <% } %>
+                <% } %>
+            </div>
+        <% } %>
+    </div>
+    <div id="delete-modal" class="modal">
+        <div class="del-modal-content">
+            <p>정말 삭제하시겠습니까?</p>
+            <p>삭제 시, 복구할 수 없습니다.</p>
+            <button id="confirm-delete" class="modal-btn">예</button>
+            <button id="cancel-delete" class="modal-btn">아니오</button>
+        </div>
+    </div>
+
+    <div id="patch-modal" class="modal">
+        <div class="modal-content">
+            <h2>리뷰 수정</h2>
+            <form id="patch-form">
+                <textarea id="patch-content" rows="10" style="width: 100%;"></textarea>
+                <div class="modal-btn-container">
+                    <button type="button" id="confirm-patch" class="modal-btn">수정</button>
+                    <button type="button" id="cancel-patch" class="modal-btn">취소</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- footer -->
+    <%- include('partials/tail.ejs') %>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/login.js"></script>
+<script defer src="/js/mypage.js"></script>
+<script defer src="/js/navbar.js"></script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <link rel="stylesheet" href="/css/signup.css">
+    <!-- <title>Document</title> -->
+    <%- include('partials/head.ejs') %>
+</head>
+<nav class="navbar">
+    <div class="navdiv">
+      <div class="logo">
+        <a href="/">MovieMemo</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wrapper">
+    <h1>회원가입</h1>
+    <form action="/member/register" method="POST" name="signup">
+      <input
+        type="text"
+        id="user-id"
+        name="name"
+        placeholder="아이디"
+      /><br />
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="비밀번호"
+      /><br />
+      <input
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        placeholder="비밀번호 확인"
+      /><br />
+      <input
+        type="text"
+        id="username"
+        name="nick"
+        placeholder="닉네임"
+      /><br />
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="이메일"
+        required
+      /><br />
+
+      <label for="gender">성별</label><br /><br />
+      <input type="radio" id="male" name="gender" value="male" />
+      <label for="male">남성</label>
+      <input type="radio" id="female" name="gender" value="female" />
+      <label for="female">여성</label><br /><br />
+
+      <label for="age">연령대</label><br /><br />
+      <input type="radio" id="age10s" name="age" value="10" />
+      <label for="age10s">10대</label>
+      <input type="radio" id="age20s" name="age" value="20" />
+      <label for="age20s">20대</label>
+      <input type="radio" id="age30s" name="age" value="30" />
+      <label for="age30s">30대</label>
+      <input type="radio" id="age40s" name="age" value="40" />
+      <label for="age40s">40대이상</label><br /><br />  
+      <div class="error-message"></div>  
+      <button class="signup-btn" type="submit">가입하기</button>
+      <button class="return-btn" type="button" onclick="window.location.href = '/'">돌아가기</button>
+
+          
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="/js/signup.js"></script>
+</body>
+</html>

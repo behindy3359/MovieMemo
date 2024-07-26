@@ -1,0 +1,179 @@
+* {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #050c0a;
+}
+
+.navbar {
+  background: #050c0a;
+  padding: 0 15px;
+  margin-bottom: 100px;
+  margin-top: 10px;
+}
+
+.navdiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo a {
+  font-size: 35px;
+  font-weight: 600;
+  color: white;
+}
+
+button {
+  background-color: #b20710;
+  margin-left: 10px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 90px;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+button a {
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.signup-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e4e4e4;
+}
+
+.wrapper {
+  width: 500px;
+  padding: 32px 16px;
+  margin: 50px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h1 {
+  font-size: 32px;
+  color: #07001f;
+  margin-bottom: 60px;
+}
+
+form input {
+  width: 80%;
+  outline: none;
+  border: 1px solid #fff;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  background: #e4e4e4;
+}
+
+form .radio-group {
+  margin-bottom: 20px; /* Adjust spacing between radio groups */
+}
+
+form input[type="radio"] {
+  display: none; /* Hide the default radio button */
+}
+
+form input[type="radio"] + label {
+  display: inline-block;
+  background-color: #e4e4e4;
+  border: 1px solid #fff;
+  padding: 12px 20px;
+  margin-right: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.gender,
+.age {
+  margin-bottom: 20px;
+}
+
+form input[type="radio"]:checked + label {
+  background-color: #b20710;
+  color: white;
+}
+
+.signup-btn {
+  width: 50%;
+  font-size: 16px;
+  margin-top: 28px;
+  padding: 10px 0;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  width: 80%;
+  color: #fff;
+  cursor: pointer;
+  background-color: green;
+}
+
+.return-btn {
+  width: 50%;
+  font-size: 16px;
+  margin-top: 28px;
+  padding: 10px 0;
+  border-radius: 20px;
+  outline: none;
+  border: none;
+  width: 80%;
+  color: #fff;
+  cursor: pointer;
+  background-color: #b20710;
+}
+
+.signup-btn:hover {
+  background-color: #086205;
+  /* Slightly darker shade */
+}
+.return-btn:hover {
+  background-color: #8c0610;
+  /* Slightly darker shade */
+}
+
+input:focus {
+  border: 1px solid rgb(192, 192, 192);
+}
+
+/* 모바일 화면에서 적용될 스타일 */
+@media screen and (max-width: 800px) {
+  .wrapper {
+    width: 90%; /* 화면 너비의 90%로 설정 */
+    padding: 20px; /* 내부 패딩 축소 */
+    margin: 30px auto; /* 상하 여백 축소 */
+  }
+
+  h1 {
+    font-size: 28px; /* 제목 폰트 크기 축소 */
+    margin-bottom: 40px; /* 제목과 입력 폼 사이 여백 축소 */
+  }
+
+  form input {
+    width: 100%; /* 입력 필드 너비를 100%로 설정하여 화면에 꽉 차게 함 */
+  }
+
+  form .radio-group {
+    margin-bottom: 10px; /* 라디오 버튼 그룹 간격 축소 */
+  }
+
+  .signup-btn {
+    font-size: 14px; /* 버튼 폰트 크기 축소 */
+    margin-top: 24px; /* 버튼과 하단 여백 축소 */
+    padding: 8px 0; /* 버튼 패딩 축소 */
+  }
+}

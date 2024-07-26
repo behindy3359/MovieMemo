@@ -1,0 +1,313 @@
+* {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1 rem;
+
+}
+
+body {
+    background: #050C0A;
+    min-height: 100vh;
+    position: relative;
+    color: #fff;
+}
+
+span {
+    color: white;
+}
+
+h3 {
+    color: white;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* modal */
+
+.hidden {
+    display: none;
+}
+
+.loginModal {
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20%;
+    min-width: 400px;
+    max-width: 500px;
+    /* position the close button */
+    position: relative;
+    text-align: center;
+}
+
+form input {
+    width: 80%;
+    outline: none;
+    border: 1px solid #fff;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background: #e4e4e4;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.login-btn {
+    background: #B20710;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    width: 90px;
+    margin-top: 10px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+}
+
+.login {
+    color: #000;;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.login-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*  */
+.search-box-word{
+  color: #fff;
+}
+
+/* searchResult page/ 결과 출력 박스들 디자인 css */
+.search-result-section{
+    position: absolute;
+    max-width:  768px;
+    min-width:  768px;
+    left: calc(50% - 384px);
+}
+.search-result-wrapper{
+    /* 기본 스타일을 위해서 */
+    margin: 5px;
+    border-radius: 5px;
+    background: #3a3a3a5b;
+    /* 컨텐츠의 배치를 위해서 */
+    position: relative;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.search-result-image img{
+    width: 100px;
+    height: 150px;
+}
+
+.search-result-content{
+    display: block;
+}
+.search-result-content-box{
+    height: 150px;
+    width: calc(100% - 100px);
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+}
+.search-result-content{
+  width: 100%;
+  margin: 4px 0 4px 0;
+}
+
+.show-next-page-btn {
+    width: 100px; 
+    margin: 20px auto 0; 
+    padding: 10px 0;    
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.search-result-wrapper:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+
+
+/* 모바일 화면에서 적용될 스타일 */
+@media screen and (max-width: 800px) {
+
+    h3{
+        margin-left: 0;
+        margin-bottom: 1.875rem;
+        padding: 0 3%;
+    }
+
+    .search-result-container{
+        width: 100%;
+        padding: 0 3%;
+    }
+
+    .search-result-section {
+      position: static; /* 기본 static 위치로 변경 */
+      max-width: 100%; /* 최대 너비를 화면에 꽉 차게 조정 */
+      min-width: auto; /* 최소 너비 설정 해제 */
+      left: 0; /* 좌우 여백 제거 */
+    }
+  
+    .search-result-wrapper {
+      margin: 10px 0; /* 검색 결과 박스들 사이의 간격 조정 */
+      background: #3a3a3a5b;
+      flex-direction: column; /* 세로 배치로 변경 */
+      align-items: center; /* 가운데 정렬 */
+      text-align: center; /* 텍스트 가운데 정렬 */
+      padding: 15px; /* 내부 여백 추가 */
+    }
+  
+    .search-result-image img {
+      width: 80%; /* 이미지 너비를 박스에 맞게 조정 */
+      height: auto; /* 비율 유지 */
+      margin-bottom: 10px; /* 아래 여백 추가 */
+    }
+  
+    .search-result-content-box {
+      height: auto; /* 컨텐츠 박스 높이 자동 설정 */
+
+      justify-content: center; /* 가운데 정렬 */
+      text-align: left;
+    }
+  
+    .show-next-page-btn {
+      width: 100%; /* 버튼 너비를 박스에 맞게 조정 */
+      margin: 20px 0 0; /* 상단 여백 추가 */
+      padding: 10px 0; /* 내부 여백 추가 */
+      font-size: 1.2rem; /* 폰트 크기 조정 */
+    }
+
+    /* 로그인 모달 창 */
+
+
+  .navdiv {
+    flex-wrap: wrap;
+  }
+
+  .search-box-wrapper{
+    display: none;
+  }
+
+
+  .m-search-box-wrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1.875rem;
+    padding: 1.125rem 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+   }
+
+   .m-search-box-Smethod{
+    width: 15%;
+  }
+
+  .m-search-box-word{
+    width: 40%;
+    padding-bottom: 0px;
+    text-align: right;
+    background:none;
+    border:none;
+    outline: none;
+    color: #fff;
+  }
+
+  .m-search-box-btn{
+    background-color: transparent
+  }
+
+
+  .loginModal {
+    width: 90%; /* 로그인 모달 창 너비 조정 */
+    left: 5%; /* 화면 가운데 정렬 */
+    top: 20%; /* 상단 여백 추가 */
+  }
+
+
+  .login-box input {
+    width: 100%; /* 입력 필드 너비를 100%로 설정하여 화면에 꽉 차게 함 */
+  }
+
+  .login-btn {
+    width: 100%; /* 로그인 버튼 너비 조정 */
+    margin-top: 20px; /* 버튼과 입력 필드 사이 여백 추가 */
+  }
+
+  .modal-content {
+      margin: 10% auto; /* 모달 창을 화면 중앙으로 이동 */
+      padding: 15px; /* 내부 패딩 축소 */
+      width: 80%; /* 모달 창 너비 조정 */
+      max-width: 300px; /* 최대 너비 지정 */
+      border: none; /* 테두리 제거 */
+    }
+  
+    form input {
+      width: 100%; /* 입력 필드 너비를 100%로 설정하여 화면에 꽉 차게 함 */
+    }
+  
+    .close {
+      font-size: 24px; /* 닫기 버튼 아이콘 크기 조정 */
+      top: 5px; /* 닫기 버튼 위치 조정 */
+      right: 10px;
+    }
+  
+    .login-btn {
+      width: 100%; /* 로그인 버튼 너비 조정 */
+      margin-top: 20px; /* 버튼과 입력 필드 사이 여백 추가 */
+    }
+  
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.8); /* 배경 투명도 조정 */
+    }
+}
+  

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title> -->
+    <%- include('partials/head.ejs') %>
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/searchresult.css" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <%- include('partials/components/navbar') %>
+    <!-- <nav class="navbar">
+      <div class="navdiv">
+        <div class="logo">
+          <a href="#">MovieMemo</a>
+        </div>
+        <ul>
+          <button id="adminButton" class="hidden"><a href="/adminpage">관리자전용</a></button>
+          <button><a href="/register">회원가입</a></button>
+          <button id="openLoginModal"><a href="#">로그인</a></button>
+        </ul>
+      </div>
+    </nav> -->
+
+    <!-- Swiper -->
+    <!-- Slider main container -->
+    <div class="first-swiper swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- slides with js code -->
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev custom-prev-button-first"></div>
+      <div class="swiper-button-next custom-next-button-first"></div>
+
+      <!-- If we need scrollbar -->
+      <div class="swiper-scrollbar"></div>
+    </div>
+
+    <!-- movies slider-->
+
+    <section class="second-swiper swiper"></section>
+
+    <section class="second-swiper swiper"></section>
+
+    <section class="second-swiper swiper"></section>
+    <section class="second-swiper swiper"></section>
+    <section class="second-swiper swiper"></section>
+    <section class="second-swiper swiper"></section>
+
+    <!-- modal -->
+    <div class="loginModal hidden">
+      <div class="login-modal-content">
+        <span class="close">&times;</span>
+        <h2 class="login">로그인</h2>
+        <form id="login-form" action="/login" method="post">
+          <div class="login-box">
+            <input type="text" id="user-id" name="user-id" placeholder="id" />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="password"
+            />
+            <div id="error-container"></div>
+            <button class="login-btn" type="submit">로그인</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <!-- Footer -->
+    <%- include('partials/tail.ejs') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/navbar.js"></script>
+  </body>
+</html>

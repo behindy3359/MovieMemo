@@ -1,0 +1,456 @@
+* {
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050C0A;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: #050C0A;
+}
+
+.navbar {
+    background: #050C0A;
+    padding: 0 15px;
+    margin-bottom: 100px;
+    margin-top: 10px;
+}
+
+.navdiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo a {
+    font-size: 35px;
+    font-weight: 600;
+    color: white;
+}
+
+
+
+.signup-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e4e4e4;
+}
+
+.wrapper {
+    width: 90%;
+    padding: 32px 16px;
+    margin: 50px auto;
+    background-color: rgb(25,26,27);
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    min-height: 300px;
+    flex-grow: 1; /* 페이지 아래까지 공간을 차지하도록 설정 */
+    color:white;
+}
+
+h1 {
+    font-size: 32px;
+    color: #07001f;
+    margin-bottom: 60px;
+}
+
+h2 {
+    font-size: 30px;
+    color: white;
+    margin-bottom: 5%;
+    text-align: center;
+    margin-left: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fields-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+form input,
+form select {
+    width: 80%; 
+    outline: none;
+    border: 1px solid #fff;
+    padding: 12px 20px;
+    margin: 5px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background: #e4e4e4;
+}
+
+.nick-field, .password-field {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    position: relative;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.member-patch-btn, .member-delete-btn {
+    font-size: 16px;
+    margin-top: 28px;
+    padding: 10px 0;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    width: 20%; 
+    color: #fff;
+    cursor: pointer;
+    background-color: #B20710;
+}
+
+.member-patch-btn:hover, .member-delete-btn:hover {
+    background-color: #8C0610;
+}
+
+input:focus {
+    border: 1px solid rgb(192, 192, 192);
+}
+
+#sortBy {
+    position: absolute;
+    right: 4%; 
+    top: 7%;
+    /* transform: translateY(-50%); */
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    font-size: 16px;
+}
+
+.review-title {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.review-title-row {
+    font-size: 25px;
+    margin: 0 auto 10px;
+    text-align: left;
+    width: 100%;
+}
+
+.review-content-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
+}
+
+.review-content {
+    display: block;
+    font-size: 15px;
+    width: 60%; 
+    text-align: left;
+    text-overflow: ellipsis /* ...으로 대체 */ !important;
+    white-space: nowrap /* 한 줄만 보이도록 설정 */ !important;
+    overflow: hidden /* 크기 오버 시 텍스트 줄임 */ !important;
+    vertical-align: top;
+    margin-top: 4px;
+}
+.full {
+    word-break: break-all /* 강제 줄 바꿈 */ !important;
+    white-space: normal  /* 줄 바꿈 되도록 설정 */ !important;
+    overflow: visible   /* 오버플로우 허용 */ !important;
+    text-overflow: clip /* 모든 내용을 표시하도록 설정 */ !important;
+}
+
+.read-more {
+    color: #B20710;
+    cursor: pointer;
+    display: block;
+    margin-top: 5px;
+    width: 10%;
+    text-align: center;
+    left: 65%; 
+}
+
+.likes-count {
+    display: flex;
+    align-items: center;
+    width: 10%;
+    justify-content: center;
+}
+
+.like-img {
+    margin-top: 5px;
+    width: 20px;
+    height: 20px;
+    
+    
+}
+
+.like-num {
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.review-btn {
+    display: flex;
+    gap: 5px;
+    width: 150px;
+    justify-content: center;
+}
+
+.review-btn button {
+    background-color: #B20710;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.pagination {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.page-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+    text-align: center;
+}
+
+.page-number:hover {
+    background-color: #f0f0f0;
+}
+
+.page-number.active {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+}
+
+.review-btn button:hover {
+    background-color: #8C0610;
+}
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content{
+    background-color: rgb(25, 26, 27);
+    position: sticky;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.del-modal-content {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    position: sticky;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(25, 26, 27);
+    color: #fff;
+}
+
+.del-modal-content p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+}
+
+#patch-content{
+    background-color: rgb(40, 43, 44);
+    color:#fefefe;
+    /* white-space: pre-wrap; */
+}
+
+
+.modal-content textarea {
+    
+    margin-bottom: 20px;
+    white-space: pre-wrap; /* 줄바꿈과 연속된 공백을 유지 */
+}
+
+    
+
+.modal-btn {
+    margin: 10px;
+    cursor: pointer;
+    gap: 10px;
+
+    padding: 10px 20px;
+    background-color: #B20710;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.modal-btn:hover {
+    background-color: #8C0610;
+}
+
+#passwordMessage {
+    position: absolute;
+    top: 7%; 
+    right: 13%;
+}
+#chgPasswordMessage {
+    position: absolute;
+    font-size: 14px;
+    top: 41%; 
+    right: 13%;
+}
+
+#confirmPasswordMessage {
+    position: absolute;
+    top: 73%; 
+    right: 13%;
+}
+
+
+/* 모바일 미디어 쿼리 */
+@media screen and (max-width: 800px) {
+  .logo a {
+      font-size: 20px; /* 로고 폰트 크기 축소 */
+  }
+
+  .navbar {
+      margin-bottom: 50px; /* 네비게이션 바 간격 조정 */
+  }
+
+  .wrapper {
+      padding: 20px; /* 패딩 축소 */
+  }
+
+  h2 {
+      font-size: 20px; /* 제목 폰트 크기 축소 */
+  }
+
+  .fields-container {
+      flex-direction: column; /* 필드 세로 정렬 */
+  }
+
+  .nick-field{
+    width: 100%;
+  }
+
+  .nick-field select{
+    width: 80%;
+  }
+
+  .nick-field p{
+    margin-bottom: 1.875rem;
+  }
+
+  .password-field{
+    width: 100%;
+  }
+
+  .member-patch-btn {
+    margin-left: 0;
+    margin-top: 1.25rem;  
+    font-size: 14px; /* 버튼 폰트 크기 축소 */
+  }
+
+  .member-delete-btn{
+    margin-top: 1.25rem;
+    font-size: 14px;
+  }
+
+  .button-container {
+    gap: 5px; /* 버튼 사이 간격 축소 */
+}
+
+.modal-content{
+    position: sticky;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+  h2{
+    margin-left: 0;
+    margin-bottom: 3.125rem;
+  }
+
+  .review-title {
+    margin-left: 0;  
+    margin-bottom: 10px; /* 리뷰 타이틀 하단 여백 조정 */
+  }
+
+  .review-content{
+    width: 35%;
+  }
+
+  .read-more{
+    width: 15%;
+  }
+
+  .review-btn{
+    width: 33%;
+  }
+
+  .review-title-row{
+    font-size: 1.3rem;
+  }
+
+  .page-number {
+      width: 30px; /* 페이지 넘버 크기 축소 */
+      height: 30px;
+  }
+}
